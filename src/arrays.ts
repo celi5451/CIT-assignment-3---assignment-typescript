@@ -83,14 +83,14 @@ export function awaitingGrades(): string[] {
 
 type Style = 'short' | 'long';
 
-export function formatterFor(style: Style): (student: Student) => string {
-    if (style === 'short') {
-      return student => student.name;
+export function formatterFor(style: Style): (student: Student) => string {    // returns a function that takes a student and returns a string
+    if (style === 'short') {    // if the style is 'short', return a function that takes a student and returns their name
+      return student => student.name;   // return the student's name
     }
-    else if (style === 'long') {
+    else if (style === 'long') {    // if the style is 'long', return a function that takes a student and returns their name, department and total credits
       return student => `${student.name} (${student.deptName}), ${student.totCred} credits`;
     }
-    else {
+    else {    // if the style is not 'short' or 'long', throw an error
       throw new Error(`Unknown style: ${style}`);
     }
 }
@@ -103,6 +103,9 @@ export function formatterFor(style: Style): (student: Student) => string {
  * at all: build new objects with the three dots.
  */
 export function raiseCredits(list: Student[], deptName: string, extra: number): Student[] {
-  // TODO
-  throw new Error('not implemented');
+  return list.map((student) =>    // map over the list of students
+    student.deptName === deptName   // if the student's department matches the given department name
+      ? { ...student, totCred: student.totCred + extra }    // return a new object with the same properties as the student, but with the totCred increased by extra
+      : student   // return the student unchanged if the department does not match
+  );
 }
