@@ -63,8 +63,10 @@ export function averageGrade(studentId: string): number {
  * sorted alphabetically and without repeats.
  */
 export function awaitingGrades(): string[] {
-  // TODO
-  throw new Error('not implemented');
+  return students   //returns an array of students
+    .filter(student => enrolments.some(enrolment => enrolment.studentId === student.id && enrolment.grade === null))    // filters the students who have at least one enrolment without a grade. some checks if there is at least one enrolment for the student with a null grade
+    .map(student => student.name)   // maps the students to their names
+    .sort();    // sorts the names alphabetically
 }
 
 // --- A4. A family of formatters ------------------------------------------
@@ -78,9 +80,19 @@ export function awaitingGrades(): string[] {
  * The style may only be one of two strings. Try passing 'medium' and read
  * the error the compiler gives you.
  */
-export function formatterFor(style: 'short' | 'long'): (student: Student) => string {
-  // TODO
-  throw new Error('not implemented');
+
+type Style = 'short' | 'long';
+
+export function formatterFor(style: Style): (student: Student) => string {
+    if (style === 'short') {
+      return student => student.name;
+    }
+    else if (style === 'long') {
+      return student => `${student.name} (${student.deptName}), ${student.totCred} credits`;
+    }
+    else {
+      throw new Error(`Unknown style: ${style}`);
+    }
 }
 
 // --- A5. Changing nothing -------------------------------------------------
