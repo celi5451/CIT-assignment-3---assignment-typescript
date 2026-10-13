@@ -16,10 +16,10 @@ console.log(gradeReport('00128'));
 console.log(gradeReport('98988'));
 //   BIO-101 Intro. to Biology: 12
 //   BIO-301 Genetics: not awarded
-// console.log(gradeReport('70557'));              // '' (no enrolments)
-// console.log(averageGrade('00128'));             // 11
-// console.log(averageGrade('98988'));             // 12  (the null does not count)
-// console.log(averageGrade('70557'));             // 0
+console.log(gradeReport('70557'));              // '' (no enrolments)
+console.log(averageGrade('00128'));             // 11
+console.log(averageGrade('98988'));             // 12  (the null does not count)
+console.log(averageGrade('70557'));             // 0
 // console.log(awaitingGrades());                  // [ 'Tanaka' ]
 // console.log(formatterFor('short')(students[0])); // Zhang
 // console.log(formatterFor('long')(students[0]));  // Zhang (Comp. Sci.), 102 credits
