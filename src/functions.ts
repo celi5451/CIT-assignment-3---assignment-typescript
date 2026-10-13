@@ -61,10 +61,21 @@ export function partition(list: Student[], test: Test): [Student[], Student[]] {
  *     count();   // 13, calls is still 1
  *
  * Be ready to say where the saved number lives after once has returned.
+ * “Where does the saved number live after once has returned?”
+ * In the closure: the variable result belongs to the scope of that call to once. 
+ * The returned function keeps access to it, so it stays alive even though once has finished. 
+ * Nothing else can reach it, only the returned function. Each call to once creates its own separate result, 
+ * so two once-wrapped functions never share a saved value.
  */
 export function once(calculation: () => number): () => number {
-  // TODO
-  throw new Error('not implemented');
+  let result: number | undefined;       // a variable to hold the result of the calculation, initially undefined
+
+  return () => {
+    if (result === undefined) {
+      result = calculation();           // if result is undefined, run the calculation and save the result
+    }
+    return result;                      // return the saved result
+  };
 }
 
 // --- B4. All of them ------------------------------------------------------

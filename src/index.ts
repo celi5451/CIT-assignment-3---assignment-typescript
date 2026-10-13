@@ -38,8 +38,8 @@ console.log(upper.length, lower.length);         // 6 7
 // calls is not part of the task: it only proves the calculation ran once.
 // The first two numbers are the answer handed back twice, the last is how
 // many times the calculation actually ran.
-// let calls = 0;
-// const count = once(() => { calls++; return students.length; });
-// console.log(count(), count(), calls);            // 13 13 1
+let calls = 0;
+const count = once(() => { calls++; return students.length; });
+console.log(count(), count(), calls);            // 13 13 1
 // console.log(students.filter(allOf(inCs, atLeast(60))).length);   // 1
 // console.log(students.filter(allOf()).length);    // 13
