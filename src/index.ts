@@ -4,16 +4,16 @@
 // line, so you can see for yourselves whether it is right.
 
 import { students } from './data.js';
-// import { gradeReport, averageGrade, awaitingGrades, formatterFor, raiseCredits } from './arrays.js';
-// import { not, partition, once, allOf, inDepartment, atLeast } from './functions.js';
+import { gradeReport, averageGrade, awaitingGrades, formatterFor, raiseCredits } from './arrays.js';
+import { not, partition, once, allOf, inDepartment, atLeast } from './functions.js';
 
 console.log(students.length + ' students');
 
 // --- Part A ---
-// console.log(gradeReport('00128'));
+console.log(gradeReport('00128'));
 //   CS-101 Intro. to Computer Science: 12
 //   CS-347 Database System Concepts: 10
-// console.log(gradeReport('98988'));
+console.log(gradeReport('98988'));
 //   BIO-101 Intro. to Biology: 12
 //   BIO-301 Genetics: not awarded
 // console.log(gradeReport('70557'));              // '' (no enrolments)

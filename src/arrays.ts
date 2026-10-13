@@ -22,9 +22,15 @@ import { Student, Enrolment, students, courses, enrolments } from './data.js';
  * You need enrolments and courses. filter, map, find, a template literal and
  * join. No for loops in this file.
  */
-export function gradeReport(studentId: string): string {
-  // TODO
-  throw new Error('not implemented');
+export function gradeReport(studentId: string): string {    
+  return enrolments  
+    .filter((enrolment) => enrolment.studentId === studentId)   // filter the enrolments for the given studentId
+    .map((enrolment) => {     // map each enrolment to a string
+      const course = courses.find((course) => course.courseId === enrolment.courseId);    // find the course for the enrolment
+      const grade = enrolment.grade !== null ? enrolment.grade : 'not awarded';           // if the grade is null, return 'not awarded', otherwise return the grade
+      return `${course?.courseId} ${course?.title}: ${grade}`;    // return the string with the courseId, title and grade
+    })
+    .join('\n');    // join the strings with a newline
 }
 
 // --- A2. Averaging --------------------------------------------------------
@@ -42,6 +48,7 @@ export function gradeReport(studentId: string): string {
 export function averageGrade(studentId: string): number {
   // TODO
   throw new Error('not implemented');
+  
 }
 
 // --- A3. Who is missing a grade ------------------------------------------
