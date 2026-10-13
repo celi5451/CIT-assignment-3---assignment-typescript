@@ -41,5 +41,8 @@ console.log(upper.length, lower.length);         // 6 7
 let calls = 0;
 const count = once(() => { calls++; return students.length; });
 console.log(count(), count(), calls);            // 13 13 1
-// console.log(students.filter(allOf(inCs, atLeast(60))).length);   // 1
-// console.log(students.filter(allOf()).length);    // 13
+console.log(students.filter(allOf(inCs, atLeast(60))).length);   // 1
+console.log(students.filter(allOf()).length);    // 13
+//Own additional example: One more example of allOf, with two tests that are not met by any student. (There is one student in finance, but none with at least 112 credits.)
+const inFinance = inDepartment('Finance');
+console.log(students.filter(allOf(inFinance, atLeast(112))).length);   // 1
