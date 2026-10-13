@@ -5,7 +5,7 @@
 import { Student } from './data.js';
 
 /** A test on a student. Used by everything below. */
-export type Test = (student: Student) => boolean;
+export type Test = (student: Student) => boolean;   // a function that takes a student and returns a boolean
 
 // --- B1. The opposite test ------------------------------------------------
 
@@ -17,9 +17,8 @@ export type Test = (student: Student) => boolean;
  *
  * One line is enough, once you see what has to be returned.
  */
-export function not(test: Test): Test {
-  // TODO
-  throw new Error('not implemented');
+export function not(test: Test): Test {   
+  return (student) => !test(student);   // return a new function that takes a student and returns the opposite of the test
 }
 
 // --- B2. One pass, two answers -------------------------------------------
@@ -34,8 +33,18 @@ export function not(test: Test): Test {
  * caller can take them apart by position.
  */
 export function partition(list: Student[], test: Test): [Student[], Student[]] {
-  // TODO
-  throw new Error('not implemented');
+  const passing: Student[] = [];    // an array to hold the students that pass the test
+  const failing: Student[] = [];    // an array to hold the students that fail the test
+
+  for (const student of list) {     // loop over the list of students
+    if (test(student)) {            // if the student passes the test
+      passing.push(student);        // add the student to the passing array
+    } else {                        // if the student fails the test
+      failing.push(student);        // add the student to the failing array
+    }
+  }
+
+  return [passing, failing];        // return a tuple of the passing and failing arrays
 }
 
 // --- B3. Do it once -------------------------------------------------------
